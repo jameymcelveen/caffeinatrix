@@ -42,11 +42,11 @@ That is enough to use it nightly. Leave it running, kill it in the morning.
 
 ### Controls
 
-| Key | Action |
-| --- | --- |
-| `Esc` | quit |
-| `Cmd/Ctrl + Q` | quit |
-| `F` | toggle fullscreen |
+| Key            | Action            |
+| -------------- | ----------------- |
+| `Esc`          | quit              |
+| `Cmd/Ctrl + Q` | quit              |
+| `F`            | toggle fullscreen |
 
 ## Build the installers
 
@@ -78,10 +78,10 @@ shortcut carry the coffee-cup logo.
 Everything lives in `renderer.js` near the top:
 
 ```js
-const FONT_SIZE = 18;     // glyph size
-const HEAD = '#cfffd0';   // leading glyph color
-const BODY = '#00ff41';   // trail color (classic matrix green)
-const FPS  = 26;          // frame cap (lower = cooler/quieter laptop)
+const FONT_SIZE = 18; // glyph size
+const HEAD = "#cfffd0"; // leading glyph color
+const BODY = "#00ff41"; // trail color (classic matrix green)
+const FPS = 26; // frame cap (lower = cooler/quieter laptop)
 ```
 
 Drop `FPS` for an even calmer overnight burn, bump `FONT_SIZE` for chunkier
