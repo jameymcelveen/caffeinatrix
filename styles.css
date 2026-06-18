@@ -1,0 +1,37 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  cursor: none;
+}
+
+#matrix {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* A quiet hint that fades out a few seconds after launch. */
+#hint {
+  position: fixed;
+  bottom: 18px;
+  right: 22px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #00ff41;
+  opacity: 0.55;
+  user-select: none;
+  pointer-events: none;
+  animation: fade 1.2s ease-in 5s forwards;
+}
+
+@keyframes fade {
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hint { animation: none; opacity: 0.4; }
+}
