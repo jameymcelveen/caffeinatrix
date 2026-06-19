@@ -1,20 +1,60 @@
 {
-  "name": "caffeinatrix",
+  "name": "@jameymcelveen/cafx",
   "productName": "Caffeinatrix",
   "version": "1.0.0",
-  "description": "A fullscreen Matrix rain that keeps your Mac or PC awake while your long jobs run.",
+  "description": "Caffeinatrix — a fullscreen Matrix rain that keeps your Mac or PC awake while your long jobs run.",
   "main": "main.js",
-  "author": "Jamey",
-  "license": "MIT",
+  "bin": {
+    "cafx": "bin/cafx.js"
+  },
+  "files": [
+    "bin",
+    "build/icon.png",
+    "index.html",
+    "main.js",
+    "preload.js",
+    "renderer.js",
+    "styles.css"
+  ],
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "dist:mac": "electron-builder --mac",
-    "dist:win": "electron-builder --win"
+    "dist:win": "electron-builder --win",
+    "prepublishOnly": "node --check bin/cafx.js && node --check main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jameymcelveen/caffeinatrix.git"
+  },
+  "homepage": "https://github.com/jameymcelveen/caffeinatrix#readme",
+  "bugs": {
+    "url": "https://github.com/jameymcelveen/caffeinatrix/issues"
+  },
+  "keywords": [
+    "cafx",
+    "caffeinate",
+    "caffeinatrix",
+    "display-sleep",
+    "electron",
+    "keep-awake",
+    "matrix",
+    "power-save",
+    "screensaver"
+  ],
+  "author": "Jamey McElveen <jamey@mcelveen.us>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "electron": "^31.7.0"
   },
   "devDependencies": {
-    "electron": "^31.7.0",
     "electron-builder": "^24.13.3"
   },
   "build": {

@@ -1,4 +1,4 @@
-.PHONY: help install start logo pack dist dist-mac dist-win commit
+.PHONY: help install start logo pack dist dist-mac dist-win npm-pack npm-publish commit
 
 .DEFAULT_GOAL := help
 
@@ -27,6 +27,12 @@ dist-mac: ## macOS .dmg in release/
 
 dist-win: ## Windows NSIS installer in release/
 	npm run dist:win
+
+npm-pack: ## dry-run: list files that would ship to npm
+	npm pack --dry-run
+
+npm-publish: ## publish @jameymcelveen/cafx to npm (npm login required)
+	npm publish --access=public
 
 commit: ## stage all and commit (MSG="message"; use \n for body lines)
 ifndef MSG

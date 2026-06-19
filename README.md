@@ -31,14 +31,32 @@ and your background work never gets paused.
 static to burn into an OLED or mini-LED display over a long overnight session.
 The rain is the screen saver and the keep-awake at the same time.
 
-## Run it from source
+## Install globally (npm)
+
+Requires [Node.js](https://nodejs.org/) 18 or newer.
 
 ```bash
-npm install
-npm start
+npm install -g @jameymcelveen/cafx
+cafx
 ```
 
-That is enough to use it nightly. Leave it running, kill it in the morning.
+That installs the `cafx` command on your `PATH` and launches **Caffeinatrix**
+(fullscreen Matrix rain, display sleep blocked). The npm package name is scoped
+(`@jameymcelveen/cafx`); you still run **`cafx`**. `npm` also pulls in Electron
+as a dependency during install (a few hundred MB). After that, it is just `cafx`
+whenever you need the rain.
+
+Upgrade later with:
+
+```bash
+npm update -g @jameymcelveen/cafx
+```
+
+Uninstall:
+
+```bash
+npm uninstall -g @jameymcelveen/cafx
+```
 
 ### Controls
 
@@ -47,6 +65,22 @@ That is enough to use it nightly. Leave it running, kill it in the morning.
 | `Esc`          | quit              |
 | `Cmd/Ctrl + Q` | quit              |
 | `F`            | toggle fullscreen |
+
+## Run from source (development)
+
+```bash
+npm install
+npm start
+```
+
+That is enough to use it nightly. Leave it running, kill it in the morning.
+
+Test the global CLI locally before publishing:
+
+```bash
+npm link
+cafx
+```
 
 ## Build the installers
 
@@ -94,6 +128,37 @@ change the alphabet.
 `assets/logo.svg` is the source of truth: a coffee cup whose steam is the code,
 brewed in matrix green. Regenerate the raster icons any time with
 `python3 build_logo.py` followed by the icon export in this repo's history.
+
+## Publish to npm
+
+Maintainer workflow. You need an [npm](https://www.npmjs.com/) account and a
+one-time login on the machine that publishes:
+
+```bash
+npm login
+```
+
+Bump `version` in `package.json` before each release (npm rejects duplicate
+versions). Then:
+
+```bash
+make npm-pack      # optional — see exactly what ships in the tarball
+make npm-publish   # npm publish --access=public
+```
+
+Or without Make:
+
+```bash
+npm pack --dry-run
+npm publish --access=public
+```
+
+The published npm package is **`@jameymcelveen/cafx`**; the app window and
+installers still say **Caffeinatrix**. The tarball includes the Electron app and
+the `cafx` CLI (`bin/cafx.js`). `electron-builder` installers stay a separate
+local build (`make dist-mac` / `make dist-win`); they are not uploaded to npm.
+
+Package page: [npmjs.com/package/@jameymcelveen/cafx](https://www.npmjs.com/package/@jameymcelveen/cafx)
 
 ## License
 
